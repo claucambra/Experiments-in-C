@@ -30,6 +30,11 @@ int main(int argc, char *argv[]) {
   char ch;
   int height = atoi(argv[2]);
 
+  while (height > 19 || height < 1) {
+    printf("%i is not a valid height. Pyramids can be between 1 and 19 lines high.\n");
+    return 2;
+  }
+
   printf("Pyramid with height of %i lines.", height);
 
   int count;
