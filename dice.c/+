@@ -58,21 +58,15 @@ int main() {
 	do {
 		memset(input, 0, sizeof input);
 		fgets(input, 9, stdin);
-		input[strcspn(input, "\n")] = 0;
-
-		if(strcmp(input, "quit") == 0)
-			break;
-		else if (strcmp(input, "help") == 0)
+		printf("INPUT = %s", input);
+		if(strcmp(input, "help") == 0)
 			printf("HELP MESSAGE\n");
-		else if (strcmp(input, "setup") == 0)
+		else if(strcmp(input, "setup") == 0)
 			setup();
-		else if (strcmp(input, "roll") == 0) {
-			rollDice(); 
-			printDice();
-		} else {
-			puts("No command detected"); 
+		else if(strcmp(input, "roll") == 0)
+			rollDice(), printDice();
+		else
 			continue;
-		}
 	} while (strcmp(input, "quit") != 0);
 
 	return 0;
