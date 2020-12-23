@@ -65,11 +65,13 @@ void print_dice() {
 		}
 		i = 0;
 	}
+	int total = 0;
 	while(dice_rack[i] != 0) {
 		printf("DICE %i: %i\t", i + 1, dice_rack[i]); 
+		total += dice_rack[i];
 		i++;
 	}
-	printf("\n");
+	printf("\nTOTAL: %i\n", total);
 }
 
 char charred_num_input[10];
