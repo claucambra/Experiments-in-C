@@ -6,7 +6,17 @@
 int sidesDice = 6;
 int numDice = 2;
 
-int diceRack[100];
+int diceRack[1000];
+
+//ASCII art dice
+const char dice1[] = "  +---------------------------+\n +-----------------------------+\n+-|                           |-+\n|-|                           |-|\n|-|                           |-|\n|-|                           |-|\n|-|           XXXXX           |-|\n|-|          XXXXXXX          |-|\n|-|          XXXXXXX          |-|\n|-|           XXXXX           |-|\n|-|                           |-|\n|-|                           |-|\n|-|                           |-|\n+-|                           |-+\n +-----------------------------+\n  +---------------------------+\n";
+const char dice2[] = "  +---------------------------+\n +-----------------------------+\n+-|                           |-+\n|-|   XXXXX                   |-|\n|-|  XXXXXXX                  |-|\n|-|  XXXXXXX                  |-|\n|-|   XXXXX                   |-|\n|-|                           |-|\n|-|                           |-|\n|-|                   XXXXX   |-|\n|-|                  XXXXXXX  |-|\n|-|                  XXXXXXX  |-|\n|-|                   XXXXX   |-|\n+-|                           |-+\n +-----------------------------+\n  +---------------------------+\n";
+const char dice3[] = "  +---------------------------+\n +-----------------------------+\n+-|                           |-+\n|-|   XXXXX                   |-|\n|-|  XXXXXXX                  |-|\n|-|  XXXXXXX                  |-|\n|-|   XXXXX   XXXXX           |-|\n|-|          XXXXXXX          |-|\n|-|          XXXXXXX          |-|\n|-|           XXXXX   XXXXX   |-|\n|-|                  XXXXXXX  |-|\n|-|                  XXXXXXX  |-|\n|-|                   XXXXX   |-|\n+-|                           |-+\n +-----------------------------+\n  +---------------------------+\n";
+const char dice4[] = "  +---------------------------+\n +-----------------------------+\n+-|                           |-+\n|-|   XXXXX           XXXXX   |-|\n|-|  XXXXXXX         XXXXXXX  |-|\n|-|  XXXXXXX         XXXXXXX  |-|\n|-|   XXXXX           XXXXX   |-|\n|-|                           |-|\n|-|                           |-|\n|-|   XXXXX           XXXXX   |-|\n|-|  XXXXXXX         XXXXXXX  |-|\n|-|  XXXXXXX         XXXXXXX  |-|\n|-|   XXXXX           XXXXX   |-|\n+-|                           |-+\n +-----------------------------+\n  +---------------------------+\n";
+const char dice5[] = "  +---------------------------+\n +-----------------------------+\n+-|                           |-+\n|-|   XXXXX           XXXXX   |-|\n|-|  XXXXXXX         XXXXXXX  |-|\n|-|  XXXXXXX         XXXXXXX  |-|\n|-|   XXXXX   XXXXX   XXXXX   |-|\n|-|          XXXXXXX          |-|\n|-|          XXXXXXX          |-|\n|-|   XXXXX   XXXXX   XXXXX   |-|\n|-|  XXXXXXX         XXXXXXX  |-|\n|-|  XXXXXXX         XXXXXXX  |-|\n|-|   XXXXX           XXXXX   |-|\n+-|                           |-+\n +-----------------------------+\n  +---------------------------+\n";
+const char dice6[] = "  +---------------------------+\n +-----------------------------+\n+-|                           |-+\n|-|   XXXXX   XXXXX   XXXXX   |-|\n|-|  XXXXXXX XXXXXXX XXXXXXX  |-|\n|-|  XXXXXXX XXXXXXX XXXXXXX  |-|\n|-|   XXXXX   XXXXX   XXXXX   |-|\n|-|                           |-|\n|-|                           |-|\n|-|   XXXXX   XXXXX   XXXXX   |-|\n|-|  XXXXXXX XXXXXXX XXXXXXX  |-|\n|-|  XXXXXXX XXXXXXX XXXXXXX  |-|\n|-|   XXXXX   XXXXX   XXXXX   |-|\n+-|                           |-+\n +-----------------------------+\n  +---------------------------+\n";
+
+char commandList[] = "\n\n<---------------------------- COMMANDS ---------------------------->\n\nhelp: prints this cheat sheet\nsetup: choose number of dice and sides of these dice\nroll: roll the dice\nquit: close this program\n\n";
 
 void rollDice() {
 	memset(diceRack, 0, sizeof diceRack);
@@ -14,16 +24,6 @@ void rollDice() {
 		diceRack[i] = rand() % sidesDice + 1;
 	}
 }
-
-
-char dice1[] = "  +--------------------------+\n +----------------------------+\n+-|                           |-+\n|-|                           |-|\n|-|                           |-|\n|-|                           |-|\n|-|           XXXXX           |-|\n|-|          XXXXXXX          |-|\n|-|          XXXXXXX          |-|\n|-|           XXXXX           |-|\n|-|                           |-|\n|-|                           |-|\n|-|                           |-|\n+-|                           |-+\n +-----------------------------+\n  +---------------------------+\n";
-char dice2[] = "  +---------------------------+\n +-----------------------------+\n+-|                           |-+\n|-|   XXXXX                   |-|\n|-|  XXXXXXX                  |-|\n|-|  XXXXXXX                  |-|\n|-|   XXXXX                   |-|\n|-|                           |-|\n|-|                           |-|\n|-|                   XXXXX   |-|\n|-|                  XXXXXXX  |-|\n|-|                  XXXXXXX  |-|\n|-|                   XXXXX   |-|\n+-|                           |-+\n +-----------------------------+\n  +---------------------------+\n";
-char dice3[] = "  +---------------------------+\n +-----------------------------+\n+-|                           |-+\n|-|   XXXXX                   |-|\n|-|  XXXXXXX                  |-|\n|-|  XXXXXXX                  |-|\n|-|   XXXXX   XXXXX           |-|\n|-|          XXXXXXX          |-|\n|-|          XXXXXXX          |-|\n|-|           XXXXX   XXXXX   |-|\n|-|                  XXXXXXX  |-|\n|-|                  XXXXXXX  |-|\n|-|                   XXXXX   |-|\n+-|                           |-+\n +-----------------------------+\n  +---------------------------+\n";
-char dice4[] = "  +---------------------------+\n +-----------------------------+\n+-|                           |-+\n|-|   XXXXX           XXXXX   |-|\n|-|  XXXXXXX         XXXXXXX  |-|\n|-|  XXXXXXX         XXXXXXX  |-|\n|-|   XXXXX           XXXXX   |-|\n|-|                           |-|\n|-|                           |-|\n|-|   XXXXX           XXXXX   |-|\n|-|  XXXXXXX         XXXXXXX  |-|\n|-|  XXXXXXX         XXXXXXX  |-|\n|-|   XXXXX           XXXXX   |-|\n+-|                           |-+\n +-----------------------------+\n  +---------------------------+\n";
-char dice5[] = "  +---------------------------+\n +-----------------------------+\n+-|                           |-+\n|-|   XXXXX           XXXXX   |-|\n|-|  XXXXXXX         XXXXXXX  |-|\n|-|  XXXXXXX         XXXXXXX  |-|\n|-|   XXXXX   XXXXX   XXXXX   |-|\n|-|          XXXXXXX          |-|\n|-|          XXXXXXX          |-|\n|-|   XXXXX   XXXXX   XXXXX   |-|\n|-|  XXXXXXX         XXXXXXX  |-|\n|-|  XXXXXXX         XXXXXXX  |-|\n|-|   XXXXX           XXXXX   |-|\n+-|                           |-+\n +-----------------------------+\n  +---------------------------+\n";
-char dice6[] = "  +---------------------------+\n +-----------------------------+\n+-|                           |-+\n|-|   XXXXX   XXXXX   XXXXX   |-|\n|-|  XXXXXXX XXXXXXX XXXXXXX  |-|\n|-|  XXXXXXX XXXXXXX XXXXXXX  |-|\n|-|   XXXXX   XXXXX   XXXXX   |-|\n|-|                           |-|\n|-|                           |-|\n|-|   XXXXX   XXXXX   XXXXX   |-|\n|-|  XXXXXXX XXXXXXX XXXXXXX  |-|\n|-|  XXXXXXX XXXXXXX XXXXXXX  |-|\n|-|   XXXXX   XXXXX   XXXXX   |-|\n+-|                           |-+\n +-----------------------------+\n  +---------------------------+\n";
-
-
 
 void printDice() {
 	int i = 0;
@@ -66,32 +66,37 @@ void printDice() {
 
 char charredNumInput[10];
 void setup() {
-	printf("\nHow many sides would you like your dice to have? (DEFAULT is %i)\n", sidesDice);
+	printf("\nHow many sides would you like your dice to have?\n", sidesDice);
 	fgets(charredNumInput, 9, stdin);
 	if(atoi(charredNumInput))
 		sidesDice = atoi(charredNumInput);
 	else
 		puts("No number detected.");
-	printf("Dice sides set to %i\n", sidesDice);
 	memset(charredNumInput, 0, sizeof charredNumInput);
 
-	printf("\nHow many dice would you like to start with? (DEFAULT is %i)\n", numDice);
-	fgets(charredNumInput, 9, stdin);
-	if(atoi(charredNumInput))
-		numDice = atoi(charredNumInput);
-	else
-		puts("No number detected.");
-	printf("Dice sides set to %i\n", numDice);
+	printf("\nHow many dice would you like to start with?\n", numDice);
+	do {
+		if(numDice > 999)
+			puts("Max number of dice is 999");
+		
+		fgets(charredNumInput, 9, stdin);
+		if(atoi(charredNumInput))
+			numDice = atoi(charredNumInput);
+		else
+			puts("No number detected.");
+	} while (numDice > 999);
 	memset(charredNumInput, 0, sizeof charredNumInput);
+	
+	printf("NEW SETTINGS: Dice sides: %i, Dice amount: %i\n\n", sidesDice, numDice);
 
 	rollDice();
-	printDice();
 }
 
 int main() {
-	srand(time(NULL));
+	srand(time(NULL)); //Random num generator for dice, seed set as current time
 
-	setup();
+	puts(commandList);
+	printf("DEFAULTS: Dice sides: %i, Dice amount: %i\n\n", sidesDice, numDice);
 
 	char input[10];
 	do {
@@ -102,7 +107,7 @@ int main() {
 		if(strcmp(input, "quit") == 0)
 			break;
 		else if (strcmp(input, "help") == 0)
-			printf("HELP MESSAGE\n");
+			puts(commandList);
 		else if (strcmp(input, "setup") == 0)
 			setup();
 		else if (strcmp(input, "roll") == 0) {
