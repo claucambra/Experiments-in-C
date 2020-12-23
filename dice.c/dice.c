@@ -18,7 +18,7 @@ const char dice4[] = "  +---------------------------+\n +-----------------------
 const char dice5[] = "  +---------------------------+\n +-----------------------------+\n+-|                           |-+\n|-|   XXXXX           XXXXX   |-|\n|-|  XXXXXXX         XXXXXXX  |-|\n|-|  XXXXXXX         XXXXXXX  |-|\n|-|   XXXXX   XXXXX   XXXXX   |-|\n|-|          XXXXXXX          |-|\n|-|          XXXXXXX          |-|\n|-|   XXXXX   XXXXX   XXXXX   |-|\n|-|  XXXXXXX         XXXXXXX  |-|\n|-|  XXXXXXX         XXXXXXX  |-|\n|-|   XXXXX           XXXXX   |-|\n+-|                           |-+\n +-----------------------------+\n  +---------------------------+\n";
 const char dice6[] = "  +---------------------------+\n +-----------------------------+\n+-|                           |-+\n|-|   XXXXX   XXXXX   XXXXX   |-|\n|-|  XXXXXXX XXXXXXX XXXXXXX  |-|\n|-|  XXXXXXX XXXXXXX XXXXXXX  |-|\n|-|   XXXXX   XXXXX   XXXXX   |-|\n|-|                           |-|\n|-|                           |-|\n|-|   XXXXX   XXXXX   XXXXX   |-|\n|-|  XXXXXXX XXXXXXX XXXXXXX  |-|\n|-|  XXXXXXX XXXXXXX XXXXXXX  |-|\n|-|   XXXXX   XXXXX   XXXXX   |-|\n+-|                           |-+\n +-----------------------------+\n  +---------------------------+\n";
 
-char commandList[] = "\n\n<---------------------------- COMMANDS ---------------------------->\n\nhelp: prints this cheat sheet\nsetup: choose number of dice and sides of these dice\nstats: show statistics about rolls\nroll (or simply pressing ENTER): roll the dice\nquit: close this program\n\n";
+char commandList[] = "\n\n<---------------------------- COMMANDS ---------------------------->\n\nhelp:\t\tprints this cheat sheet\nsetup:\t\tchoose number of dice and sides of these dice\nstats:\t\tshow statistics about rolls\nroll / ENTER:\troll the dice\nreset:\t\treset the program to default starting state\nquit:\t\tclose this program\n\n";
 
 void roll_dice() {
 	int roll_total = 0;
@@ -150,7 +150,17 @@ void show_stats() {
 			this_num_count = 0;
 		}
 	}
+	puts("\n");
 }
+
+void reset() {
+	sides_dice = 6;
+	num_dice = 2;
+	memset(dice_rack, 0, sizeof dice_rack);
+	memset(roll_history, 0, sizeof roll_history);
+	puts("\nRESET COMPLETE.\n");
+}
+
 
 int main() {
 	srand(time(NULL)); //Random num generator for dice, seed set as current time
@@ -172,12 +182,13 @@ int main() {
 			setup();
 		else if (strcmp(input, "stats") == 0)
 			show_stats();
-		else if (strcmp(input, "roll") == 0) {
+		else if (strcmp(input, "reset") == 0)
+			reset();
+		else if (strcmp(input, "roll") == 0 || input[0] == '\0') {
 			roll_dice(); 
 			print_dice();
 		} else {
-			roll_dice(); 
-			print_dice(); 
+			puts("COMMAND NOT RECOGNISED."); 
 			continue;
 		}
 	} while (strcmp(input, "quit") != 0);
