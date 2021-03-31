@@ -10,8 +10,10 @@ int swap(int *num_a, int *num_b) {
  * 2. Places pivot element at its correct position in sorted array
  * 3. Places all elements smaller than pivot element to the left of pivot element
  * 4. Places all elements larger than pivot element to the right of pivot element
+ * NOTE that pivot is called when low is smaller than high.
  */
 int partition(int array[], int low, int high) {
+	// Pivot is element that will be placed at the right.
 	int pivot = array[high];
 	
 	int i = (low - 1);
@@ -44,7 +46,9 @@ int main () {
 	puts("Enter your numbers.");
 	for(i = 0; i < array_length; i++)
 		scanf("%d", &num_array[i]);
-	quick_sort(num_array, 0, array_length);
+	
+	
+	quick_sort(num_array, 0, array_length - 1);
 	
 	puts("Sorted array:");
 	for(i = 0; i < array_length; i++)
